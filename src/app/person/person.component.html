@@ -1,0 +1,30 @@
+<h1>person works!</h1>
+
+<p>Son nom est : {{_nom}}</p>
+
+<p *ngFor="let user of _users">
+    nom : {{user.name}},
+    age : {{user.age}}
+</p>
+
+<img [src]="img">
+
+<button (click)="hello()">Clic !</button>
+
+<p>{{message}}</p>
+
+<div>
+    <input type="text" [value]="message" (input)="message = $event.target.value">    
+</div>
+<div>
+    <input type="text" [ngModel]="message" (ngModelChange)="message">
+</div>
+<div>
+    <input type="text" [(ngModel)]="message">
+</div>
+
+<p>{{message | uppercase}}</p>
+<p>{{nombre | number:'1.1-2'}}</p>
+<p>{{pourcent | percent}}</p>
+<p>{{date | date}}</p>
+<p>{{date | date:'shortTime'}}</p>

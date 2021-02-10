@@ -1,0 +1,14 @@
+<h1>Todo:</h1>
+<ul>
+    <li *ngFor="let task of tasks">
+        <p>
+            {{task.task}} 
+            <input type="checkbox" [checked]="task.checked" (change)="check(task.id)"> 
+            <button type="button" class="btn btn-danger" (click)="remove(task.id)">-</button>
+            </p>
+    </li>
+</ul>
+<div>
+    <input type="text" [(ngModel)]="task"> 
+    <button (click)="add()" type="button" class="btn btn-primary">Add</button>
+</div>
