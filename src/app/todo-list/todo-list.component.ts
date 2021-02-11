@@ -25,16 +25,16 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  check = (id:number) => {
+  check(id:number) {
     let t = this.tasks.filter(task => task.id == id)[0];
     t.checked = !t.checked;
   }
-  prioritize = (id:number) => {
+  prioritize(id:number) {
     let t = this.tasks.filter(task => task.id == id)[0];
     t.highPriority = !t.highPriority;
   }
 
-  add = () => {
+  add() {
     if (this.title != "" && this.task != "") {
       this.lastID++;
       this.tasks[this.tasks.length] = {id:this.lastID, title:this.title, content:this.task, checked:false, highPriority:this.highPriority}
@@ -43,8 +43,10 @@ export class TodoListComponent implements OnInit {
     }
   }
 
-  remove = (id:number) => {
+  remove(id:number) {
     this.tasks = this.tasks.filter(task => task.id !== id);
   }
+
+  //update(task:Task) {}
 
 }

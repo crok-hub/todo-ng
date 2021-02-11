@@ -1,38 +1,39 @@
-<h1>Todo List</h1>
-<div id="app-todo-list" class="container-xl">
-    <section id="form-add" class="border">
-        <div>
-            <label for="title-task">Titre: </label>
-            <input id="title-task" type="text" [(ngModel)]="title">
-            <label for="content-task">Tâche: </label>
-            <input id="content-task" type="text" [(ngModel)]="task">
-            <label for="content-task">Tâche: </label>
-            <input id="content-task" type="checkbox" [(ngModel)]="highPriority">
-            <button (click)="add()" type="button" class="btn btn-primary">Add</button>
-        </div>
-    </section>
-    <section id="todo-list" class="border">
-        <div class="list-group">
-            <div *ngFor="let task of tasks" class="row">
-                <div class="col-10">
-                    <a class="list-group-item list-group-item-action"
-                        [ngClass]="{'list-group-item-success': task.checked == true}"
-                        (click)="check(task.id)">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{task.title}}</h5>
-                            <span *ngIf=" task.highPriority" class="badge bg-danger rounded-pill">!</span>
-                        </div>
-                        <p class="mb-1">{{task.content}}</p>
-                    </a>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-danger"
-                        (click)="prioritize(task.id)">/!\</button>
-                    <button type="button" class="btn btn-danger" (click)="remove(task.id)">-</button>
+<div id="todo-list" class="container">
+    <h2>Todo List</h2>
+    <div class="list-group">
+        <div class="row">
+            <div class="col-10">
+                <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <input type="text" class="mb-1" [(ngModel)]="title">
+                        <span class="badge bg-danger rounded-pill"><input type="checkbox" [(ngModel)]="highPriority"></span>
+                    </div>
+                    <p class="mb-1"><input type="text" [(ngModel)]="task"></p>
                 </div>
             </div>
+            <div class="col-2">
+                <button (click)="add()" type="button" class="btn btn-primary">Add</button>
+            </div>
         </div>
-    </section>
+
+        <div *ngFor="let task of tasks" class="row">
+            <div class="col-10">
+                <a class="list-group-item list-group-item-action"
+                    [ngClass]="{'list-group-item-success': task.checked == true}" (click)="check(task.id)">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{task.title}}</h5>
+                        <span *ngIf="task.highPriority" class="badge bg-danger rounded-pill text-white">!</span>
+                    </div>
+                    <p class="mb-1">{{task.content}}</p>
+                </a>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-danger" (click)="prioritize(task.id)">/!\</button>
+                <button type="button" class="btn btn-danger" (click)="remove(task.id)"> X </button>
+                <button type="button" class="btn btn-outline-info"> / </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--input #task (keydown.enter)="add(task)"-->
