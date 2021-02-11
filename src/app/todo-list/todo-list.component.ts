@@ -9,12 +9,14 @@ import { discardPeriodicTasks } from '@angular/core/testing';
 export class TodoListComponent implements OnInit {
 
   tasks = [
-    {id:1, task:"Ajoute/Supprime/Valide des tâches", checked:true},
-    {id:2, task:"Sérieux fini au moins celle-ci...", checked:false}
+    {id:1, title:"Tâche courante", content:"Valide et dé-valide des tâche en cliquant sur une ligne", checked:true, highPriority:false},
+    {id:2, title:"Supprime moi", content:"Sérieux fini au moins celle-ci...", checked:false, highPriority:false},
+    {id:3, title:"Haute priorité !", content:"!!! C'est la merde !!!", checked:false, highPriority:true}
   ]
 
   private lastID:number = this.tasks.length;
 
+  title:string = "";
   task:string = "";
 
   constructor() { }
@@ -26,17 +28,22 @@ export class TodoListComponent implements OnInit {
     let t = this.tasks.filter(task => task.id == id)[0];
     t.checked = !t.checked;
   }
+  prioritize = (id:number) => {
+    let t = this.tasks.filter(task => task.id == id)[0];
+    t.highPriority = !t.highPriority;
+  }
 
   add = () => {
-    this.lastID++;
-    this.tasks[this.tasks.length] = {id:this.lastID, task:this.task, checked:false}
+    if (this.title != "" && this.task != "") {
+      this.lastID++;
+      this.tasks[this.tasks.length] = {id:this.lastID, title:this.title, content:this.task, checked:false, highPriority:false}
+    } else {
+      alert("Saisiez un titre et un contenu !");
+    }
   }
 
   remove = (id:number) => {
-    const index: number = this.tasks.indexOf(this.tasks.filter(task => task.id == id)[0]);
-    if (index !== -1) {
-        this.tasks.splice(index, 1);
-    } 
+    this.tasks = this.tasks.filter(task => task.id !== id);
   }
 
 }
