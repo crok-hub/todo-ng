@@ -18,6 +18,7 @@ export class TodoListComponent implements OnInit {
 
   title:string = "";
   task:string = "";
+  highPriority:boolean = false;
 
   constructor() { }
 
@@ -36,7 +37,7 @@ export class TodoListComponent implements OnInit {
   add = () => {
     if (this.title != "" && this.task != "") {
       this.lastID++;
-      this.tasks[this.tasks.length] = {id:this.lastID, title:this.title, content:this.task, checked:false, highPriority:false}
+      this.tasks[this.tasks.length] = {id:this.lastID, title:this.title, content:this.task, checked:false, highPriority:this.highPriority}
     } else {
       alert("Saisiez un titre et un contenu !");
     }

@@ -2,7 +2,12 @@
 <div id="app-todo-list" class="container-xl">
     <section id="form-add" class="border">
         <div>
-            <input type="text" [(ngModel)]="task">
+            <label for="title-task">Titre: </label>
+            <input id="title-task" type="text" [(ngModel)]="title">
+            <label for="content-task">Tâche: </label>
+            <input id="content-task" type="text" [(ngModel)]="task">
+            <label for="content-task">Tâche: </label>
+            <input id="content-task" type="checkbox" [(ngModel)]="highPriority">
             <button (click)="add()" type="button" class="btn btn-primary">Add</button>
         </div>
     </section>
