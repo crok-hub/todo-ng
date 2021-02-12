@@ -1,6 +1,9 @@
 <div id="todo-list" class="container">
+
     <h2>Todo List</h2>
+
     <div class="list-group">
+
         <div class="row">
             <div class="col-10">
                 <div class="list-group-item">
@@ -8,7 +11,7 @@
                         <input type="text" class="mb-1" [(ngModel)]="title">
                         <span class="badge bg-danger rounded-pill"><input type="checkbox" [(ngModel)]="highPriority"></span>
                     </div>
-                    <p class="mb-1"><input type="text" [(ngModel)]="task"></p>
+                    <textarea id class="form-control" rows="3" [(ngModel)]="task"></textarea>
                 </div>
             </div>
             <div class="col-2">
@@ -25,14 +28,16 @@
                         <span *ngIf="task.highPriority" class="badge bg-danger rounded-pill text-white">!</span>
                     </div>
                     <p class="mb-1">{{task.content}}</p>
+                    <editable (update)="update(task.id, 'name')">{{task.content}}</editable>
                 </a>
             </div>
             <div class="col-2">
                 <button type="button" class="btn btn-danger" (click)="prioritize(task.id)">/!\</button>
                 <button type="button" class="btn btn-danger" (click)="remove(task.id)"> X </button>
-                <button type="button" class="btn btn-outline-info"> / </button>
+                <button type="button" class="btn btn-outline-warning"> / </button>
             </div>
         </div>
+
     </div>
 </div>
 

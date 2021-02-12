@@ -47,6 +47,8 @@ export class TodoListComponent implements OnInit {
     this.tasks = this.tasks.filter(task => task.id !== id);
   }
 
-  //update(task:Task) {}
+  update(id:number, content:string) {
+    
+  }
 
 }
